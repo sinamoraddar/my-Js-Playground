@@ -53,3 +53,31 @@ function mutateArray2(arr) {
 mutateArray(array);
 mutateArray2(array);
 array;
+// map and concat methods can fix this issue of mutation
+
+// Idempotence:
+function notGood() {
+  return Math.random();
+  // new Date();
+}
+
+function good() {
+  return 5;
+}
+
+Math.abs(Math.abs(10));
+
+// immutability
+const obj = { name: "Andrei" };
+function clone(obj) {
+  return { ...obj }; // this is pure
+}
+
+function updateName(obj) {
+  const obj2 = clone(obj);
+  obj2.name = "Nana";
+  return obj2;
+}
+
+const updatedObj = updateName(obj);
+console.log(obj, updatedObj);
